@@ -21,10 +21,19 @@ export class SpecificationRepository implements ISpecificationRepository {
     return SpecificationRepository.INSTANCE;
   }
 
+  list(): Specification[] {
+    return this.specifications;
+  }
+
   create({ name, description }: ICreateSpecificationDTO): void {
     const specification = new Specification();
 
-    Object.assign(specification, { name, description, created_at: new Date() });
+    Object.assign(specification, {
+      name,
+      description,
+      created_at: new Date(),
+      updated_at: new Date(),
+    });
 
     this.specifications.push(specification);
   }

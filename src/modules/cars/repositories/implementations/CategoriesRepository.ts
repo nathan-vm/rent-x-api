@@ -30,6 +30,7 @@ export class CategoriesRepository {
       name,
       description,
       created_at: new Date(),
+      updated_at: new Date(),
     });
 
     this.categories.push(category);
