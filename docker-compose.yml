@@ -1,8 +1,5 @@
 version: "3.7"
 
-networks: 
-  rentx_network:
-
 services: 
   rentx_database:
     image: postgres
@@ -16,8 +13,7 @@ services:
       - POSTGRES_DB=rentx
     volumes: 
       - pgdata:/data/postgres
-    networks: 
-      - rentx_network
+      
 
   rentx_app:
     build: .
@@ -26,9 +22,9 @@ services:
       - 3333:3333
     volumes: 
       - .:/usr/app
-    networks: 
-      - rentx_network
     depends_on:
+      - rentx_database
+    links:
       - rentx_database
       
 volumes: 
