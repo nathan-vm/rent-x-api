@@ -10,8 +10,11 @@
     "uuid": "^8.3.2"
   },
   "scripts": {
-    "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts",
-    "typeorm": "ts-node-dev ./node_modules/typeorm/cli"
+    "dev": "ts-node-dev --inspect=0.0.0.0:9229 --transpile-only --ignore-watch node_modules --respawn src/server.ts",
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli",
+    "start:docker": "docker-compose up",
+    "stop:docker": "docker-compose down",
+    "rebuild:docker": "docker-compose build --no-cache"
   },
   "devDependencies": {
     "@types/express": "^4.17.12",
