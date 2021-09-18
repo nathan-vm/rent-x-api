@@ -31,11 +31,11 @@ export async function ensureAuthenticated(
     const userRepository = new UsersRepository();
     const user = await userRepository.findById(id);
 
-    console.log(user);
-
     if (!user) {
       throw new AppError("unknown user", 401);
     }
+    delete user.password;
+    request.user = user;
 
     return next();
   } catch {
